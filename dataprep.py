@@ -51,10 +51,10 @@ def clean(data):
         return data.apply(denoise_text).apply(rm_specchar).apply(simple_stemmer).apply(remove_stopwords)
 
 data_path="dataset_updated.csv"
-imdb_data=pd.read_csv(data_path)
-x_train,x_test,y_train,y_test=train_test_split(imdb_data.review,imdb_data.sentiment,test_size=0.2)
-x_train,x_valid,y_train,y_valid=train_test_split(x_train,y_train,test_size=0.2)
+imdb_data=pd.read_csv(data_path).sample(frac=1)
 
+train_x,x_test,train_y,y_test=train_test_split(imdb_data.review,imdb_data.sentiment,test_size=0.2)
+x_train,x_valid,y_train,y_valid=train_test_split(train_x,train_y,test_size=0.25)
 
 
 

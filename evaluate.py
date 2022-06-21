@@ -17,13 +17,16 @@ def accuracy(y_true,y_pred):
     print("-*"*20)
 
 if __name__ == '__main__':
-    if (sys.argv[1]=="creport"):
-        print("classification report\nprocessing...")
-        creport(sentiment,model.predict(features))
-    elif (sys.argv[1]=="cmatrix"):
-        print("confusion matrix\nprocessing...")
-        cmatrix(sentiment,model.predict(features))
-    elif (sys.argv[1]=="acc"):
-        print("accuracy score\nprocessing...")
-        accuracy(sentiment, model.predict(features))
+    try:
+        if (sys.argv[1]=="creport"):
+            print("classification report\nprocessing...")
+            creport(sentiment,model.predict(features))
+        elif (sys.argv[1]=="cmatrix"):
+            print("confusion matrix\nprocessing...")
+            cmatrix(sentiment,model.predict(features))
+        elif (sys.argv[1]=="acc"):
+            print("accuracy score\nprocessing...")
+            accuracy(sentiment, model.predict(features))
+    except Exception as ex:
+        print(ex)
 
